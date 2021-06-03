@@ -128,7 +128,7 @@ function LoginPage(props) {
                             </Link>
                                     </Typography>
                                     <div>
-                                        <Button variant='text' size='large' color='primary' label="Submit" type="submit" fullWidth>Submit</Button>
+                                        <Button variant='text' size='large' color='primary' label="Submit" type="submit" fullWidth style ={{paddingBottom : '10px'}}>Sign In</Button>
                                     </div>
 
                                 </form>
@@ -172,7 +172,7 @@ function LoginPage(props) {
                             </Link>
                                     </Typography>
                                     <div>
-                                        <Button variant='text' size='large' color='primary' label="Submit" type="submit" fullWidth>Submit</Button>
+                                        <Button variant='text' size='large' color='primary' label="Submit" type="submit" fullWidth style ={{paddingBottom : '10px'}}>Sign In</Button>
                                     </div>
 
                                 </form>
