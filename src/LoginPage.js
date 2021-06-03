@@ -92,10 +92,10 @@ function LoginPage(props) {
                     <Grid item xs className={classes.formDiv}>
                         {useMediaQuery({ query: '(max-width : 1024px)' }) &&
                             <div id="inner-form-div" style={{ marginTop: '4%', marginLeft : '15px' }}>
-                                <Typography variant='h3'>
+                                <Typography variant='h3' style={{padding: '10px', paddinTop : '20px'}}>
                                     Welcome!
                                 </Typography>
-                                <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.root} style={{padding:"15px"}}>
+                                <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.root}>
                                     <div>
                                         <TextField fullWidth type='email' label="Email address" variant="outlined" {...register("email", { required: true })} />
                                         {errors.email
