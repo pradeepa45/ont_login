@@ -6,17 +6,20 @@ import ErrorPage from './ErrorPage';
 // var signedIn = false;
 
 function App() {
+  var status = localStorage.getItem('signIn');
   return (
     <div>
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path='/' component={LoginPage}/>
           <Route exact path='/home'>
-            {(localStorage.getItem('submitted')) ? <HomePage /> : <LoginPage />}
+            {status ? <HomePage /> : <LoginPage />}
+            {/* <HomePage /> */}
           </Route>
           <Route exact path='/notfound' component={ErrorPage} />
-          <Route path='/*'> 
-            <Redirect to='/notfound'></Redirect>
+          <Route path='/*' > 
+            {/* <Redirect to='/notfound'></Redirect> */}
+            <ErrorPage />
           </Route>
         </Switch>
       </Router>

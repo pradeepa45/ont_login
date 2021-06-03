@@ -59,9 +59,11 @@ function LoginPage(props) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data, e) => {
         console.log(data);
-        submitted = true;
-        localStorage.setItem('signIn',true);
-        getValidation(data)
+        if(data){
+            submitted = true;
+           localStorage.setItem('signIn',true);
+           getValidation(data);
+       }
     }
     const onError = (errors, e) => console.log(errors, e);
 

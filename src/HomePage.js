@@ -92,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
 function HomePage(props) {
     const classes = useStyles();
     const handleClick = () => {
+        localStorage.clear();
         props.history.replace('/')
     }
     return (

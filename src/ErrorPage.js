@@ -36,7 +36,7 @@ export default function ErrorPage() {
                     </Grid>
                     <Grid>
                         <Typography variant='h6'>
-                            <h1>Looks like you are lost, wanderer!</h1>
+                            Looks like you are lost, wanderer!
                         </Typography>
                         <Typography variant='caption'>
                             <Link href="/login">
