@@ -11,9 +11,9 @@ function App() {
     <div >
       <Router>
         <Switch>
-          <Route exact path='/ont_login/login' component={LoginPage}/>
-          <Route exact path='/ont_login/home' component={HomePage} />
-          <Route path='/*' component={ErrorPage}/>
+          <Route exact path='/' component={LoginPage}/>
+          <Route exact path='/home' component={HomePage} />
+          {/* <Route path='/*' component={ErrorPage}/> */}
         </Switch>
       </Router>
     </div>
