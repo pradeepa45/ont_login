@@ -39,7 +39,7 @@ export default function ErrorPage() {
                             <h1>Looks like you are lost, wanderer!</h1>
                         </Typography>
                         <Typography variant='caption'>
-                            <Link href="/">
+                            <Link href="/login">
                                 Click to go back
                             </Link>
                         </Typography>
