@@ -95,7 +95,7 @@ function LoginPage(props) {
                                 <Typography variant='h3'>
                                     Welcome!
                                 </Typography>
-                                <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.root}>
+                                <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.root} style={{padding:"15px"}}>
                                     <div>
                                         <TextField fullWidth type='email' label="Email address" variant="outlined" {...register("email", { required: true })} />
                                         {errors.email
