@@ -60,6 +60,7 @@ function LoginPage(props) {
     const onSubmit = (data, e) => {
         console.log(data);
         submitted = true;
+        localStorage.setItem('signIn',true);
         getValidation(data)
     }
     const onError = (errors, e) => console.log(errors, e);
