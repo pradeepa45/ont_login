@@ -1,6 +1,5 @@
 import HomePage from './HomePage'
-// import Logo from './logo.svg';
-import  {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import  {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import LoginPage from './LoginPage';
 import ErrorPage from './ErrorPage';
 
@@ -8,12 +7,15 @@ import ErrorPage from './ErrorPage';
 
 function App() {
   return (
-    <div >
-      <Router>
+    <div>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path='/' component={LoginPage}/>
           <Route exact path='/home' component={HomePage} />
-          {/* <Route path='/*' component={ErrorPage}/> */}
+          <Route exact path='/notfound' component={ErrorPage} />
+          <Route path='/*'> 
+            <Redirect to='/notfound'></Redirect>
+          </Route>
         </Switch>
       </Router>
     </div>
