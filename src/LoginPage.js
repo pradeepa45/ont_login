@@ -91,9 +91,9 @@ function LoginPage(props) {
                 <Grid container direction='row-reverse' justify='space-evenly' alignItems='center' className={classes.cont}>
                     <Grid item xs className={classes.formDiv}>
                         {useMediaQuery({ query: '(max-width : 1024px)' }) &&
-                            <div id="inner-form-div" style={{ marginTop: '4%' }}>
+                            <div id="inner-form-div" style={{ marginTop: '4%', marginLeft : '5px' }}>
                                 <Typography variant='h3'>
-                                    Hi there!
+                                    Welcome!
                                 </Typography>
                                 <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.root}>
                                     <div>
