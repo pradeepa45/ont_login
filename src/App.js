@@ -3,8 +3,7 @@ import  {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import LoginPage from './LoginPage';
 import ErrorPage from './ErrorPage';
 
-// var signedIn = false;
-
+// Router
 function App() {
   var status = localStorage.getItem('signIn');
   return (
@@ -14,11 +13,10 @@ function App() {
           <Route exact path='/' component={LoginPage}/>
           <Route exact path='/home'>
             {status ? <HomePage /> : <LoginPage />}
-            {/* <HomePage /> */}
           </Route>
           <Route exact path='/notfound' component={ErrorPage} />
           <Route path='/*' > 
-            {/* <Redirect to='/notfound'></Redirect> */}
+            <Redirect to='/notfound'></Redirect>
             <ErrorPage />
           </Route>
         </Switch>

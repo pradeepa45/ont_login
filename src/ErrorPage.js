@@ -25,8 +25,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+//Page for other urls
 export default function ErrorPage() {
     const classes = useStyles();
+    document.title = 'Error Page Not Found';
     return (
         <div>
             <ThemeProvider theme={theme}>

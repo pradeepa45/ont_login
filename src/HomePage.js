@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
 
+// setting up primary and secondary colors since we have a theme colour
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -25,7 +26,7 @@ const theme = createMuiTheme({
     },
 });
 
-
+// table cell styling
 const StyledTableCell = withStyles((theme) => ({
     head: {
         backgroundColor: "#FF585F",
@@ -36,6 +37,7 @@ const StyledTableCell = withStyles((theme) => ({
     },
 }))(TableCell);
 
+// table row styling
 const StyledTableRow = withStyles((theme) => ({
     root: {
         '&:nth-of-type(even)': {
@@ -44,10 +46,12 @@ const StyledTableRow = withStyles((theme) => ({
     },
 }))(TableRow);
 
+// to return a row data from input array
 function createData(name, id, email, contact) {
     return { name, id, email, contact };
 }
 
+// row data to be displayed in the table
 const rows = [
     createData('Frozen yoghurt', 159, "mail@domain.in", 9876543210),
     createData('Ice cream sandwich', 237, "mail@domain.in", 9876543210),
@@ -66,6 +70,7 @@ const rows = [
     createData('Pilaf Rice', 357, "mail@domain.in", 9876543210),
 ];
 
+// styling
 const useStyles = makeStyles((theme) => ({
     table: {
         minWidth: 700,
@@ -91,13 +96,16 @@ const useStyles = makeStyles((theme) => ({
 
 function HomePage(props) {
     const classes = useStyles();
+    // to handle sign out, on clicking sign out button
     const handleClick = () => {
         localStorage.clear();
         props.history.replace('/')
     }
+    document.title = 'Owner and Tenant';
     return (
         <div>
             <ThemeProvider theme={theme}>
+                {/* Header Bar */}
                 <AppBar position="static" className={classes.appbar}>
                     <Toolbar>
                         <Typography className={classes.title}>
@@ -109,8 +117,10 @@ function HomePage(props) {
                 </AppBar>
                 <Container>
                     <Container style={{ marginTop: "5%", marginBottom: "5%" }}>
+                        {/* Table */}
                         <TableContainer component={Paper}>
                             <Table className={classes.table} aria-label="customized table">
+                                {/* Table Headers */}
                                 <TableHead>
                                     <TableRow>
                                         <StyledTableCell>Name</StyledTableCell>
@@ -119,6 +129,7 @@ function HomePage(props) {
                                         <StyledTableCell align="right">Contact</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
+                                {/* Table body mapped from data */}
                                 <TableBody>
                                     {rows.map((row) => (
                                         <StyledTableRow key={row.name}>

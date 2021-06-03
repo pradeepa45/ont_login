@@ -16,7 +16,7 @@ import Link from '@material-ui/core/Link'
 import { Typography, } from "@material-ui/core";
 import { useMediaQuery } from 'react-responsive';
 
-
+// creating theme , setting up primary and secondary colours
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
     },
 });
 
-
+// styling
 const useStyles = makeStyles(({
     root: {
         '& > *': {
@@ -52,11 +52,16 @@ const useStyles = makeStyles(({
 
 }));
 
+// to check if sign in data is submitted; may not be needed actually since there is form validation
 var submitted = false;
+
+// default status before receiving api response
 var status = 404;
+
 function LoginPage(props) {
     const classes = useStyles();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();  //for form data processing and manipulation - from react-hooks-form
+    // after submit is done
     const onSubmit = (data, e) => {
         console.log(data);
         if(data){
@@ -65,8 +70,9 @@ function LoginPage(props) {
            getValidation(data);
        }
     }
+    // if there is an error
     const onError = (errors, e) => console.log(errors, e);
-
+    // to get response from api
     const getValidation = (data) => {
         if (submitted === true) {
             axios.get(`https://dev-api.ownerandtenant.com/v1.0/auth/user/signin${data}`)
@@ -82,9 +88,10 @@ function LoginPage(props) {
                 })
         }
     }
+    document.title = 'Owner and Tenant | Login'
     return (
         <div>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={theme}> {/* to use the theme created*/}
                 <AppBar position="static" className={classes.headerbar}>
                     <Toolbar>
                         <img src={Logo} alt="logo" width="150px"></img>
