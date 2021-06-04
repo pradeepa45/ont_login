@@ -99,7 +99,7 @@ function LoginPage(props) {
             axios.get(`https://dev-api.ownerandtenant.com/v1.0/auth/user/signin${data}`)
                 .then((response) => {
                     status = response.data.status;
-                    console.log(status);
+//                     console.log(status);
                     if (status === 200) {
                         props.history.push('/home');
                     }
