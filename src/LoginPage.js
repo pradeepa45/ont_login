@@ -65,7 +65,7 @@ function LoginPage(props) {
     const { register, handleSubmit, formState: { errors } } = useForm();  //for form data processing and manipulation - from react-hooks-form
     // after submit is done
     const onSubmit = (data, e) => {
-        console.log(data);
+        // console.log(data);
         if (data) {
             submitted = true;
             localStorage.setItem('signIn', true);
