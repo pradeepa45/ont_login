@@ -15,6 +15,16 @@ import { withRouter } from 'react-router-dom';
 import Link from '@material-ui/core/Link'
 import { Typography, } from "@material-ui/core";
 import { useMediaQuery } from 'react-responsive';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 // creating theme , setting up primary and secondary colours
 const theme = createMuiTheme({
@@ -59,9 +69,18 @@ var submitted = false;
 var status = 404;
 
 function LoginPage(props) {
-    const bigScreen = useMediaQuery({ query : '(min-device-width : 500px)'});
-    const smallScreen = useMediaQuery({ query : '(max-width : 500px)'});
+    const bigScreen = useMediaQuery({ query: '(min-device-width : 500px)' });
+    const smallScreen = useMediaQuery({ query: '(max-width : 500px)' });
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     const { register, handleSubmit, formState: { errors } } = useForm();  //for form data processing and manipulation - from react-hooks-form
     // after submit is done
     const onSubmit = (data, e) => {
@@ -85,7 +104,7 @@ function LoginPage(props) {
                         props.history.push('/home');
                     }
                     else {
-
+                        handleClickOpen();
                     }
                 })
                 .catch(error => {
@@ -204,6 +223,26 @@ function LoginPage(props) {
                         }
                     </Grid>
                 </Grid>
+                <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">{"Oops!"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+           There seems to be an error in the server. Please try to sign in after some time.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Okay
+          </Button>
+        </DialogActions>
+      </Dialog>
                 {/* <Button style={{ position: "absolute", bottom: '0', right: '0' }} ></Button> */}
             </ThemeProvider>
         </div >
