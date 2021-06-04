@@ -59,16 +59,18 @@ var submitted = false;
 var status = 404;
 
 function LoginPage(props) {
+    const bigScreen = useMediaQuery({ query : '(min-device-width : 500px)'});
+    const smallScreen = useMediaQuery({ query : '(max-width : 500px)'});
     const classes = useStyles();
     const { register, handleSubmit, formState: { errors } } = useForm();  //for form data processing and manipulation - from react-hooks-form
     // after submit is done
     const onSubmit = (data, e) => {
         console.log(data);
-        if(data){
+        if (data) {
             submitted = true;
-           localStorage.setItem('signIn',true);
-           getValidation(data);
-       }
+            localStorage.setItem('signIn', true);
+            getValidation(data);
+        }
     }
     // if there is an error
     const onError = (errors, e) => console.log(errors, e);
@@ -81,6 +83,9 @@ function LoginPage(props) {
                     console.log(status);
                     if (status === 200) {
                         props.history.push('/home');
+                    }
+                    else {
+
                     }
                 })
                 .catch(error => {
@@ -100,9 +105,9 @@ function LoginPage(props) {
 
                 <Grid container direction='row-reverse' justify='space-evenly' alignItems='center' className={classes.cont}>
                     <Grid item xs className={classes.formDiv}>
-                        {useMediaQuery({ query: '(max-width : 1024px)' }) &&
-                            <div id="inner-form-div" style={{ marginTop: '4%', marginLeft : '15px' }}>
-                                <Typography variant='h3' style={{padding: '10px', paddinTop : '20px'}}>
+                        {smallScreen &&
+                            <div id="inner-form-div" style={{ marginTop: '4%', marginLeft: '15px' }}>
+                                <Typography variant='h3' style={{ padding: '10px', paddinTop: '20px' }}>
                                     Welcome!
                                 </Typography>
                                 <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.root}>
@@ -135,15 +140,15 @@ function LoginPage(props) {
                             </Link>
                                     </Typography>
                                     <div>
-                                        <Button variant='text' size='large' color='primary' label="Submit" type="submit" fullWidth style ={{marginBottom : '10px'}}>Sign In</Button>
+                                        <Button variant='text' size='large' color='primary' label="Submit" type="submit" fullWidth style={{ marginBottom: '10px' }}>Sign In</Button>
                                     </div>
 
                                 </form>
                             </div>
                         }
-                        {useMediaQuery({ query: '(min-device-width : 1024px)' }) &&
+                        {bigScreen &&
                             <div id="inner-form-div" >
-                                <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.root} style={{ margin: '15px', paddingTop : '20px' }}>
+                                <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.root} style={{ margin: '15px', paddingTop: '20px' }}>
                                     <div>
                                         <Typography variant='h4'>
                                             Welcome!
@@ -179,7 +184,7 @@ function LoginPage(props) {
                             </Link>
                                     </Typography>
                                     <div>
-                                        <Button variant='text' size='large' color='primary' label="Submit" type="submit" fullWidth style ={{marginBottom : '10px'}}>Sign In</Button>
+                                        <Button variant='text' size='large' color='primary' label="Submit" type="submit" fullWidth style={{ marginBottom: '10px' }}>Sign In</Button>
                                     </div>
 
                                 </form>
@@ -187,13 +192,12 @@ function LoginPage(props) {
                         }
                     </Grid>
                     <Grid item xs >
-                        {useMediaQuery({ query: '(max-width : 1024px)' }) &&
+                        {smallScreen &&
                             <div style={{ position: 'relative', marginLeft: '18%', marginTop: '15%' }}>
                                 <img src={Icon1} alt="home" height="250vh" width="auto"></img>
                             </div>
                         }
-                        {
-                            useMediaQuery({ query: '(min-device-width : 1024px)' }) &&
+                        {bigScreen &&
                             <div style={{ position: 'absolute', bottom: '10px', left: '40px' }}>
                                 <img src={Icon1} alt="home" height="300vh" width="auto"></img>
                             </div>

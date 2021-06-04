@@ -1,5 +1,5 @@
 import HomePage from './HomePage'
-import  {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import  {HashRouter as Router, Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import LoginPage from './LoginPage';
 import ErrorPage from './ErrorPage';
 
@@ -25,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
