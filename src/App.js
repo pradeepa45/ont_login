@@ -1,14 +1,16 @@
 import HomePage from './HomePage'
-import  {HashRouter as Router, Switch, Route, Redirect, withRouter} from 'react-router-dom';
+import  {HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import ErrorPage from './ErrorPage';
+import {createBrowserHistory} from 'history'
 
 // Router
 function App() {
   var status = localStorage.getItem('signIn');
-  return (
+  const history = createBrowserHistory({forceRefresh : true})
+;  return (
     <div>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={process.env.PUBLIC_URL} history={history}>
         <Switch>
           <Route exact path='/' component={LoginPage}/>
           <Route exact path='/home'>
